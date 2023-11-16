@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamifique suas Tarefas - HeavenPlanner</title>
+    <link rel="stylesheet" href="src/css/main.css">
+    <link rel="stylesheet" href="src/css/home.css">
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo-and-nav">
+            <div class="logo"><p>HP</p></div>
+            <nav class="nav-bar">
+                <ul>
+                    <li><a href="#" class="item-nav-bar"><i class="fa-solid fa-house"></i></a></li>
+                    <li><a href="#" class="item-nav-bar"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="options">
+            <a href="#" class="item-nav-bar"><i class="fa-solid fa-gear"></i></a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="user-infos">
+                <div class="user-reward">
+                    <ul>
+                        <li class="coins"><i class="fa-solid fa-coins"></i>999999.99</li>
+                        <li class="experience"><i class="fa-solid fa-star"></i>1956 / 2000</li>
+                        <li class="skill-points"><i class="fa-solid fa-circle-plus"></i>99</li>
+                    </ul>
+                </div>
+                <div class="user-profile">
+                    <div class="user-profile-infos">
+                        <p class="username">username</p>
+                        <p class="userclass">Class</p>
+                        <div class="user-lifebar">
+                            <p class="lifebar-value">99999/99999</p>
+                            <span class="lifebar-outside">
+                                <span class="lifebar-inside"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="userimage"></div>
+                </div>
+            </section>
+            
+            <div class="tasks">
+                <section class="daily-tasks">
+                    <div class="change-day">
+                        <h2>Minhas Tarefas</h2>
+                        <div class="change-buttons">
+                            <button class="change"><i class="fa-solid fa-arrow-left"></i></button>
+                            <button class="today">Hoje</button>
+                            <button class="change"><i class="fa-solid fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="to-do">
+                        <h4>Fazer</h4>
+                        <div class="task-card">
+                            <div class="task-body">
+                                <span class="task-color" style="background-color: #36EE5F;"></span>
+                                <button class="task-check"><!--<i class="fa-solid fa-check"></i>--></button>
+                                <div class="task-infos">
+                                    <p class="task-title">Título da Tarefa</p>
+                                    <p class="task-description">Descrição do Objetivo com poucos detalhes.</p>
+                                </div>
+                                <button class="task-edit"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                            </div>
+                            <div class="task-footer">
+                                <p class="date">Início: dd/mm/aaaa</p>
+                                <div class="task-rewards">
+                                    <ul>
+                                        <li class="task-coins"><i class="fa-solid fa-coins"></i>999.99</li>
+                                        <li class="task-experience"><i class="fa-solid fa-star"></i>999.99</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="task-kebab-menu">
+                                <button class="task-btn-edit"><i class="fa-solid fa-pen"></i> Editar</button>
+                                <button class="task-btn-edit"><i class="fa-solid fa-trash-can"></i> Excluir</button>
+                            </div>
+                        </div>
+
+                        <div class="task-card">
+                            <div class="task-body">
+                                <span class="task-color" style="background-color: #D72638;"></span>
+                                <button class="task-check complete"><i class="fa-solid fa-check"></i></button>
+                                <div class="task-infos">
+                                    <p class="task-title">Título da Tarefa</p>
+                                    <p class="task-description">Descrição do Objetivo com poucos detalhes.</p>
+                                </div>
+                                <button class="task-edit"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                            </div>
+                            <div class="task-footer">
+                                <p class="date">Início: dd/mm/aaaa</p>
+                                <div class="task-rewards">
+                                    <ul>
+                                        <li class="task-coins"><i class="fa-solid fa-coins"></i>999.99</li>
+                                        <li class="task-experience"><i class="fa-solid fa-star"></i>999.99</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="task-kebab-menu">
+                                <button class="task-btn-edit"><i class="fa-solid fa-pen"></i> Editar</button>
+                                <button class="task-btn-edit"><i class="fa-solid fa-trash-can"></i> Excluir</button>
+                            </div>
+                        </div>
+
+                        <div class="task-card">
+                            <div class="task-body">
+                                <span class="task-color" style="background-color: #FB8B24;"></span>
+                                <button class="task-check fail"><i class="fa-solid fa-xmark"></i></button>
+                                <div class="task-infos">
+                                    <p class="task-title">Título da Tarefa</p>
+                                    <p class="task-description">Descrição do Objetivo com poucos detalhes.</p>
+                                </div>
+                                <button class="task-edit"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                            </div>
+                            <div class="task-footer">
+                                <p class="date">Início: dd/mm/aaaa</p>
+                                <div class="task-rewards">
+                                    <ul>
+                                        <li class="task-coins"><i class="fa-solid fa-coins"></i>999.99</li>
+                                        <li class="task-experience"><i class="fa-solid fa-star"></i>999.99</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="task-kebab-menu">
+                                <button class="task-btn-edit"><i class="fa-solid fa-pen"></i> Editar</button>
+                                <button class="task-btn-edit"><i class="fa-solid fa-trash-can"></i> Excluir</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="new-daily-task">
+                        <button class="btn-new-task">
+                            <i class="fa-solid fa-plus"></i>
+                             Nova Tarefa
+                        </button>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://kit.fontawesome.com/3bb5c1e371.js" crossorigin="anonymous"></script>
+</body>
+</html>

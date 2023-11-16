@@ -1,0 +1,70 @@
+:root {
+    --var-bg-color: #150F1D;
+    --var-bg-item-color: #3A2A50;
+    --var-primary-red-color: #D72638;
+    --var-call-green-color: #36EE5F;
+    --var-text-color: #ffffff;
+    --var-sub-text-color: #5E5E5E;
+    --var-coins-color: #FFCB56;
+    --var-xp-color: #5CC8FF;
+    --var-points-color: #FB8B24;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body{
+    background-color: var(--var-bg-color);
+}
+
+.container{
+    width: 95%;
+    margin-left: 5%;
+    padding: 1em 2em;
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* HEADER */
+header{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 0;
+    height: 100vh;
+    width: 5%;
+    box-sizing: border-box;
+    position: fixed;
+    border-right: 2px solid var(--var-bg-item-color);
+}
+header .logo{
+    color: var(--var-primary-red-color);
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: bold;
+    padding-bottom: .9em;
+    border-bottom: 2px solid var(--var-bg-item-color);
+    margin-bottom: .9em;
+}
+header .nav-bar ul{
+    list-style: none;
+    text-align: center;
+}
+header .nav-bar li{
+    margin-bottom: 1em;
+}
+.item-nav-bar{
+    color: var(--var-bg-item-color);
+    text-decoration: none;
+    font-size: 1.5em;
+    padding: .3em;
+    box-sizing: border-box;
+    transition: .2s linear;
+}
+.item-nav-bar:hover{
+    color: var(--var-primary-red-color);
+}

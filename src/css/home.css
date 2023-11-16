@@ -1,0 +1,308 @@
+:root {
+    --var-bg-color: #150F1D;
+    --var-bg-item-color: #3A2A50;
+    --var-primary-red-color: #D72638;
+    --var-call-green-color: #36EE5F;
+    --var-text-color: #f1f1f1;
+    --var-sub-text-color: #868686;
+    --var-coins-color: #FFCB56;
+    --var-xp-color: #5CC8FF;
+    --var-points-color: #FB8B24;
+}
+
+/* PROFILE */
+.user-infos .user-profile{
+    position: absolute;
+    top: 1em;
+    right: 2em;
+    display: flex;
+    gap: 1em;
+    align-items: center;
+}
+.user-infos .user-profile .userimage{
+    display: block;
+    width: 3em;
+    height: 3em;
+    background-color: var(--var-bg-item-color);
+    border-radius: 4em;
+}
+.user-infos .user-profile-infos{
+    color: var(--var-text-color);
+    text-align: end;
+    height: 3.8em;
+    position: relative;
+}
+.user-profile-infos .userclass{
+    color: var(--var-sub-text-color);
+}
+.user-lifebar{
+    width: 11em;
+    position: absolute;
+    bottom: 0em;
+    right: 0;
+    height: 2.2em;
+}
+.lifebar-value{
+    text-align: left;
+    font-size: .8em;
+    color: var(--var-call-green-color);
+    margin-bottom: .2em;
+}
+.lifebar-outside{
+    display: block;
+    background-color: var(--var-bg-item-color);
+    height: .8em;
+    border-radius: 1em 0 1em 0;
+    overflow: hidden;
+}
+.lifebar-inside{
+    display: inline-block;
+    height: 1em;
+    background-color: var(--var-call-green-color);
+    width: 100%;
+    text-align: right;
+}
+
+/* REWARD */
+.user-reward{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3.5em;
+}
+.user-reward ul{
+    display: flex;
+    list-style: none;
+    gap: 2em;
+    color: var(--var-text-color);
+}
+.user-reward ul li i{
+    margin-right: .5em;
+}
+.user-reward ul .coins i{
+    color: var(--var-coins-color);
+}
+.user-reward ul .experience i{
+    color: var(--var-xp-color);
+}
+.user-reward ul .skill-points i{
+    color: var(--var-points-color);
+}
+
+/* TASKS */
+.tasks{
+    margin-top: 1em;
+}
+
+.daily-tasks{
+    width: 48%;
+}
+.daily-tasks .change-day{
+    color: var(--var-text-color);
+    font-size: .9em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.daily-tasks .change-buttons{
+    display: flex;
+    align-items: center;
+    gap: .5em;
+}
+.daily-tasks .change-buttons .change{
+    background-color: var(--var-primary-red-color);
+    border: none;
+    width: 2em;
+    height: 2em;
+    border-radius: 2em;
+    color: var(--var-text-color);
+    transition: .2s linear;
+}
+.daily-tasks .change-buttons .change:hover{
+    cursor: pointer;
+    box-shadow: 0 0 .5em 0 var(--var-primary-red-color);
+}
+.daily-tasks .change-buttons .today{
+    background-color: var(--var-primary-red-color);
+    border: none;
+    width: 5em;
+    height: 2em;
+    border-radius: 2em;
+    font-weight: bold;
+    font-size: 1.2em;
+    color: var(--var-text-color);
+    transition: .2s linear;
+}
+.daily-tasks .change-buttons .today:hover{
+    cursor: pointer;
+    box-shadow: 0 0 .5em 0 var(--var-primary-red-color);
+}
+
+.task-card .task-body{
+    background-color: var(--var-bg-item-color);
+    display: flex;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+    padding: .5em 0 .5em 2em;
+    border-radius: .5em;
+    overflow: hidden;
+}
+.task-body .task-color{
+    display: block;
+    width: 1em;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* TASK CHECKBOX */
+.task-body .task-check{
+    background-color: var(--var-bg-color);
+    border: none;
+    width: 3em;
+    height: 3em;
+    margin-right: 1em;
+    border-radius: 3em;
+    border: 2px solid var(--var-bg-color);
+    transition: .2s linear;
+}
+.task-body .task-check i{
+    font-size: 1.8em;
+}
+.task-body .task-check:hover{
+    border: 2px solid var(--var-call-green-color);
+    cursor: pointer;
+}
+
+.task-body .task-check.complete{
+    background-color: rgba(54, 238, 95, .5);
+    color: var(--var-call-green-color);
+    border: 2px solid var(--var-call-green-color);
+}
+.task-body .task-check.complete:hover{
+    border: 2px solid var(--var-primary-red-color);
+}
+
+.task-body .task-check.fail{
+    background-color: rgba(215, 38, 56, .5);
+    color: var(--var-primary-red-color);
+    border: 2px solid var(--var-primary-red-color);
+}
+.task-body .task-check.fail:hover{
+    border: 2px solid var(--var-bg-color);
+}
+
+/* TASK BODY */
+.task-body .task-edit{
+    position: absolute;
+    top: .5em;
+    right: 0em;
+    bottom: .5em;
+    font-size: 1.5em;
+    width: 1.5em;
+    background-color: transparent;
+    border: none;
+    color: var(--var-text-color);
+}
+.task-body .task-edit:hover{
+    cursor: pointer;
+}
+
+.task-infos .task-title{
+    color: var(--var-text-color);
+    font-size: 1.3em;
+}
+.task-infos .task-description{
+    color: var(--var-sub-text-color);
+}
+
+.task-footer{
+    display: flex;
+    justify-content: space-between;
+    padding: .2em 0 .2em 1em;
+    align-items: center;
+}
+.task-footer .date{
+    color: var(--var-sub-text-color);
+}
+.task-footer .task-rewards ul{
+    list-style: none;
+    display: flex;
+    gap: 1em;
+    color: var(--var-text-color);
+}
+.task-footer .task-rewards ul li i{
+    margin-right: .3em;
+}
+.task-footer .task-coins i{
+    color: var(--var-coins-color);
+}
+.task-footer .task-experience i{
+    color: var(--var-xp-color);
+}
+
+.task-card{
+    position: relative;
+    margin-bottom: 1em;
+}
+
+.task-kebab-menu{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--var-bg-item-color);
+    width: 7em;
+    border-radius: .5em;
+    position: absolute;
+    top: 0;
+    right: -7.8em;
+    box-shadow: 0 0 .5em 0 var(--var-bg-color);
+    overflow: hidden;
+    display: none;
+}
+.task-kebab-menu .task-btn-edit{
+    width: 100%;
+    padding: 1em;
+    background-color: transparent;
+    border: none;
+    color: var(--var-sub-text-color);
+    transition: .1s linear;
+}
+.task-kebab-menu .task-btn-edit i{
+    margin-right: .5em;
+}
+.task-kebab-menu .task-btn-edit:hover{
+    background-color: #2c203d;
+    color: var(--var-text-color);
+    cursor: pointer;
+}
+
+/* BTN NEW TASK */
+.new-daily-task{
+    display: flex;
+    justify-content: end;
+}
+.btn-new-task{
+    padding: 1em 2em;
+    background-color: var(--var-call-green-color);
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--var-bg-color);
+    border: none;
+    border-radius: 2em 0 2em 0;
+    transition: .2s ease-in-out;
+}
+.btn-new-task:hover{
+    border-radius: 2em;
+    cursor: pointer;
+    box-shadow: 0 0 .5em 0 black;
+}
+
+
+/*TO-DO*/
+h4{
+    color: var(--var-text-color);
+    margin: 1em 0;
+}
