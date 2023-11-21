@@ -68,3 +68,38 @@ header .nav-bar li{
 .item-nav-bar:hover{
     color: var(--var-primary-red-color);
 }
+
+/* ALERTS LIST */
+.alerts-list{
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+}
+.alerts-list ul{
+    list-style: none;
+}
+.alerts-list .alert {
+    background-color: var(--var-text-color);
+    padding: .5em 0;
+    width: 18em;
+    margin-top: .5em;
+    text-align: center;
+    border-radius: 1em;
+    opacity: 0;
+    transition: .2s ease-in-out;
+}
+
+.alerts-list .alert.reward {
+    background-color: rgba(54, 238, 95, .2);
+    border: 2px solid var(--var-call-green-color);
+    color: var(--var-call-green-color);
+}
+.alerts-list .alert.fail{
+    background-color: rgba(215, 38, 56, .2);
+    border: 2px solid var(--var-primary-red-color);
+    color: var(--var-primary-red-color);
+}
+
+.alerts-list .alert.opened {
+    opacity: 1;
+}

@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="src/css/home.css">
     <!--Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -66,86 +66,11 @@
 
                     <div class="to-do">
                         <h4>Fazer</h4>
-                        <div class="tasks-list" id="daily-tasks">
-                            <div class="task-card">
-                                <div class="task-body">
-                                    <span class="task-color" style="background-color: #36EE5F;"></span>
-                                    <button class="task-check"><!--<i class="fa-solid fa-check"></i>--></button>
-                                    <div class="task-infos">
-                                        <p class="task-title">Título da Tarefa</p>
-                                        <p class="task-description">Descrição do Objetivo com poucos detalhes.</p>
-                                    </div>
-                                    <button class="task-edit"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                                </div>
-                                <div class="task-footer">
-                                    <p class="date">Início: dd/mm/aaaa</p>
-                                    <div class="task-rewards">
-                                        <ul>
-                                            <li class="task-coins"><i class="fa-solid fa-coins"></i>999.99</li>
-                                            <li class="task-experience"><i class="fa-solid fa-star"></i>999.99</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="task-kebab-menu">
-                                    <button class="task-btn-edit"><i class="fa-solid fa-pen"></i> Editar</button>
-                                    <button class="task-btn-edit"><i class="fa-solid fa-trash-can"></i> Excluir</button>
-                                </div>
-                            </div>
-    
-                            <div class="task-card">
-                                <div class="task-body">
-                                    <span class="task-color" style="background-color: #D72638;"></span>
-                                    <button class="task-check complete"><i class="fa-solid fa-check"></i></button>
-                                    <div class="task-infos">
-                                        <p class="task-title">Título da Tarefa</p>
-                                        <p class="task-description">Descrição do Objetivo com poucos detalhes.</p>
-                                    </div>
-                                    <button class="task-edit"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                                </div>
-                                <div class="task-footer">
-                                    <p class="date">Início: dd/mm/aaaa</p>
-                                    <div class="task-rewards">
-                                        <ul>
-                                            <li class="task-coins"><i class="fa-solid fa-coins"></i>999.99</li>
-                                            <li class="task-experience"><i class="fa-solid fa-star"></i>999.99</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="task-kebab-menu">
-                                    <button class="task-btn-edit"><i class="fa-solid fa-pen"></i> Editar</button>
-                                    <button class="task-btn-edit"><i class="fa-solid fa-trash-can"></i> Excluir</button>
-                                </div>
-                            </div>
-    
-                            <div class="task-card">
-                                <div class="task-body">
-                                    <span class="task-color" style="background-color: #FB8B24;"></span>
-                                    <button class="task-check fail"><i class="fa-solid fa-xmark"></i></button>
-                                    <div class="task-infos">
-                                        <p class="task-title">Título da Tarefa</p>
-                                        <p class="task-description">Descrição do Objetivo com poucos detalhes.</p>
-                                    </div>
-                                    <button class="task-edit"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-                                </div>
-                                <div class="task-footer">
-                                    <p class="date">Início: dd/mm/aaaa</p>
-                                    <div class="task-rewards">
-                                        <ul>
-                                            <li class="task-coins"><i class="fa-solid fa-coins"></i>999.99</li>
-                                            <li class="task-experience"><i class="fa-solid fa-star"></i>999.99</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="task-kebab-menu">
-                                    <button class="task-btn-edit"><i class="fa-solid fa-pen"></i> Editar</button>
-                                    <button class="task-btn-edit"><i class="fa-solid fa-trash-can"></i> Excluir</button>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="tasks-list" id="daily-tasks"></div>
                     </div>
 
                     <div class="new-daily-task">
-                        <button class="btn-new-task">
+                        <button class="btn-new-task" id="btn-new-task">
                             <i class="fa-solid fa-plus"></i>
                              Nova Tarefa
                         </button>
@@ -196,6 +121,67 @@
                         </button>
                     </div>
                 </section>
+
+                <!-- NEW TASK FORM -->
+                <div class="form-tasks-background">
+                    <section class="form-tasks">
+                        <p class="task-form-title" id="task-form-title">Nova Tarefa</p>
+                        <p class="task-form-subtitle">Construa sua Rotina e evolua seu Herói</p>
+                        <form action="#" id="new-task-form">
+                            
+                            <!--name, description, color, targetDate, coins, xp;-->
+                            <div class="input-box">
+                                <label for="task-form-name">Título</label>
+                                <input type="text" name="task-form-name" id="task-form-name" placeholder="Ex: Beber Água" required>
+                            </div>
+                            <div class="input-box">
+                                <label for="task-form-description">Descrição</label>
+                                <input type="text" name="task-form-description" id="task-form-description" placeholder="Ex: Beber 3 litros de água por dia." required>
+                            </div>
+                            <div class="inpux-box">
+                                <label for="task-form-color" class="task-form-color-label">Cor da Tarefa</label>
+                                <div class="radio-color-list">
+                                    <input type="button" name="task-form-color" id="task-form-color1" class="radio-color blue" data-color="#5CC8FF">
+                                    <input type="button" name="task-form-color" id="task-form-color2" class="radio-color red" data-color="#D72638">
+                                    <input type="button" name="task-form-color" id="task-form-color4" class="radio-color magenta" data-color="#B814B8">
+                                    <input type="button" name="task-form-color" id="task-form-color3" class="radio-color green" data-color="#36EE5F">
+                                    <input type="button" name="task-form-color" id="task-form-color6" class="radio-color orange" data-color="#FB8B24">
+                                    <input type="button" name="task-form-color" id="task-form-color5" class="radio-color pink" data-color="#F288EE">
+                                    <input type="button" name="task-form-color" id="task-form-color7" class="radio-color yellow" data-color="#FFCB56">
+                                    <input type="button" name="task-form-color" id="task-form-color8" class="radio-color white" data-color="#F1F1F1">
+                                </div>
+                            </div>
+                            <div class="input-box task-form-target-date">
+                                <label for="task-form-target-date">Data Alvo</label>
+                                <input type="date" name="task-form-target-date" id="task-form-target-date">
+                            </div>
+                            
+                            <div class="task-form-rewards">
+                                <p class="task-form-rewards-title">Recompensas</p>
+                                <p class="task-form-rewards-subtitle">Seja fiel e justo consigo mesmo</p>
+                                <div class="input-box">
+                                    <label for="task-form-rewards-coins">Coins</label>
+                                    <input type="number" name="task-form-rewards-coins" id="task-form-rewards-coins" placeholder="Moedas" value="0">                                </div>
+                                <div class="input-box">
+                                    <label for="task-form-rewards-xp">Experiência</label>
+                                    <input type="number" name="task-form-rewards-xp" id="task-form-rewards-xp" placeholder="Experiência" value="0">
+                                </div>
+                            </div>
+    
+                            <div class="input-box-buttons">
+                                <input type="submit" value="Nova Tarefa" class="btn-new-task">
+                                <input type="button" value="Cancelar" class="btn-blank" id="btn-cancel">
+                            </div>
+                        </form>
+                    </section>
+                </div>
+
+                <div class="alerts-list">
+                    <ul id="alerts-list-ul">
+                        <li class="alert reward">Você ganhou: <i class="fa-solid fa-coins"></i> 999.99</li>
+                        <li class="alert fail">Você perdeu: <i class="fa-solid fa-coins"></i> 999.99</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </main>

@@ -3,6 +3,7 @@ import { User } from "./User.js";
 export class Controller {
     constructor(){
         this.user;
+        this.this = this;
 
         //USER ELEMENTS
         this.usernameEl = document.getElementById('user-username');
@@ -12,9 +13,39 @@ export class Controller {
         this.userCoinsEl = document.getElementById('user-coins');
         this.userExperienceEl = document.getElementById('user-experience');
         this.userSkillPointsEl = document.getElementById('user-skill-points');
-    
+
+        //TASKS
+        this.dailyTasksListEl = document.getElementById('daily-tasks');
+        this.btnNewTaskEl = document.getElementById('btn-new-task');
+        this.btnCancelNewTask = document.getElementById('btn-cancel');
+
+        //FORM NEW TASK
+        this.formNewTask = document.getElementById('new-task-form');
+        this.formColorButtons = document.querySelectorAll('.radio-color');
+        this.formColorData = '#36EE5F';
+
+        //ALERTS
+        this.alertsListUl = document.getElementById('alerts-list-ul');
+
+        //ADD EVENT LISTENERS
+        this.addEventListener()
+        
     }
 
+    //ADD EVENT LISTENERS
+    addEventListener(){
+        //NEW TASK SUBMIT
+        this.btnNewTaskEl.addEventListener('click', () => this.openNewFormTask());
+        this.btnCancelNewTask.addEventListener('click', () => this.openNewFormTask());
+        this.formNewTask.addEventListener('submit', (e) => this.submitFormNewTask(e))
+        
+        //COLOR BUTTONS
+        this.formColorButtons.forEach((btn) => {
+            btn.addEventListener('click', (e) => this.changeFormColor(e));
+        })
+    }
+
+    //USER AND PROFILE
     createUser(name, email, password){
         const user = new User(name, email, password);
         this.user = user;
@@ -23,8 +54,6 @@ export class Controller {
     }
 
     updateProfile(){
-        this.user.hero.hp = 45;
-
         //Hero HUD
         this.usernameEl.innerText = this.user.hero.username;
         this.userclassEl.innerText = this.user.hero.classe;
@@ -33,91 +62,93 @@ export class Controller {
         this.userCoinsEl.innerText = this.user.hero.coins;
         this.userExperienceEl.innerText = `${this.user.hero.xp}/${this.user.hero.xpForNext}`;
         this.userSkillPointsEl.innerText = this.user.hero.points;
-    
-        //Task List
-        this.dailyTasksListEl = document.getElementById('daily-tasks-list');
     }
 
     //TASKS
-    createTask(title, description, date, coins, xp, color, type = 'daily', status = 'pending'){
-        
-        this.user.newTask(title, description, date, coins, xp, color, type, status)
+    openNewFormTask(){
+        const bg = document.querySelector('.form-tasks-background');
+        bg.classList.toggle('opened');
+        bg.querySelector('.form-tasks').scrollTo({top: 0});
+    }
+
+    changeFormColor(event){
+        this.formColorButtons.forEach((btn) => {
+            btn.classList.remove('checked');
+        })
+
+        event.target.classList.add('checked');
+        this.formColorData = event.target.dataset.color;
+    }
+
+    getTaskId(){
+        function s4() {
+            return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+        }
+        return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+    }
+
+    submitFormNewTask(e){
+        e.preventDefault();
+
+        const taskId = this.getTaskId();
+        const title = this.formNewTask[0].value;
+        const description = this.formNewTask[1].value;
+        const targetDate = this.formNewTask[10].value;
+        const coins = this.formNewTask[11].value;
+        const xp = this.formNewTask[12].value;
+
+        let date = new Date(Date.now()).toLocaleDateString();
+
+        this.createTask(taskId, title, description, date, coins, xp, this.formColorData, targetDate);
+        this.openNewFormTask();
+        this.clearNewFormTask();
+    }
+
+    clearNewFormTask(){
+        this.formNewTask[0].value = '';
+        const description = this.formNewTask[1].value = '';
+        const targetDate = this.formNewTask[10].value = '';
+        const coins = this.formNewTask[11].value = '0';
+        const xp = this.formNewTask[12].value = '0';
+    }
+
+    createTask(taskId, title, description, date, coins, xp, color, targetDate, type = 'daily', status = 'pending'){
+        this.user.newTask(this.this, taskId, title, description, date, coins, xp, color, targetDate, type, status)
+        this.renderTaskList();
     }
 
     renderTaskList(){
-        // <div class="task-card">
-        //     <div class="task-body">
-        //         <span class="task-color" style="background-color: #36EE5F;"></span>
-        //         <button class="task-check"><!--<i class="fa-solid fa-check"></i>--></button>
-        //         <div class="task-infos">
-        //             <p class="task-title">Título da Tarefa</p>
-        //             <p class="task-description">Descrição do Objetivo com poucos detalhes.</p>
-        //         </div>
-        //         <button class="task-edit"><i class="fa-solid fa-ellipsis-vertical"></i></button>
-        //     </div>
-        //     <div class="task-footer">
-        //         <p class="date">Início: dd/mm/aaaa</p>
-        //         <div class="task-rewards">
-        //             <ul>
-        //                 <li class="task-coins"><i class="fa-solid fa-coins"></i>999.99</li>
-        //                 <li class="task-experience"><i class="fa-solid fa-star"></i>999.99</li>
-        //             </ul>
-        //         </div>
-        //     </div>
-        //     <div class="task-kebab-menu">
-        //         <button class="task-btn-edit"><i class="fa-solid fa-pen"></i> Editar</button>
-        //         <button class="task-btn-edit"><i class="fa-solid fa-trash-can"></i> Excluir</button>
-        //     </div>
-        // </div>
-        
-        //TASK CARD
-        let taskcard = document.createElement('div');
-        taskcard.className = 'task-card';
+        this.dailyTasksListEl.innerHTML = '';
 
-        //TASK BODY
-        let taskbody = document.createElement('div');
-        taskbody.className = 'task-body';
+        this.user.tasks[0].forEach((taskData) => {
+            taskData.createTaskElement();
+        })
+    }
 
-        let taskcolor = document.createElement('span');
-        taskcolor.className = 'task-color';
-        taskcolor.style = `background-color: #36EE5F;`;
-   
-        let taskcheck = document.createElement('button');
-        taskcheck.className = 'task-check'
+    //ALERTS
+    renderNewAlert(data){
+        let li = document.createElement('li');
+        li.classList.add('alert');
+        li.classList.add(data.type);
 
-        //TASK INFOS
-        let taskinfos = document.createElement('div');
-        taskinfos.className = 'task-infos';
+        if(data.type === 'reward'){
+            li.innerHTML = `Você ganhou: ${data.icon} ${data.value}`;
+        } else if(data.type === 'fail'){
+            li.innerHTML = `Você perdeu: ${data.icon} ${data.value}`;
+        }
 
-        let tasktitle = document.createElement('p');
-        tasktitle.className = 'task-title';
-        tasktitle.innerText = 'Título da Tarefa';
+        if(data.value > 0){
+            this.alertsListUl.appendChild(li);
 
-        let taskdescription = document.createElement('p');
-        taskdescription.className = 'task-description';
-        taskdescription.innerText = 'Descrição do Objetivo com poucos detalhes.';
-
-        let taskedit = document.createElement('button');
-        taskedit.className = 'task-edit';
-        let taskeditIcon = document.createElement('i');
-        taskeditIcon.classList.add('fa-solid', 'fa-ellipsis-vertical');
-
-        //TASK FOOTER
-        let taskfooter = document.createElement('div');
-        taskfooter.className = 'task-footer';
-
-        let date = document.createElement('p');
-        date.className = 'date';
-        date.innerText = `Início: dd/mm/aaaa`;
-    
-        let taskrewards = document.createElement('div');
-        taskrewards.className = 'task-rewards';
-
-        let rewardsUl = document.createElement('ul');
-
-        let coins = document.createElement('li');
-        coins.className = 'task-coins';
-        coins.innerHTML = `<i class="fa-solid fa-coins"></i>999.99`;
-
+            setTimeout(()=>{
+                li.classList.add('opened');
+            }, 1)
+            setTimeout(()=>{
+                li.classList.remove('opened');
+            }, 1000 * 2)
+            setTimeout(()=>{
+                this.alertsListUl.removeChild(li);
+            }, 1000 * 4)
+        }
     }
 }
