@@ -99,7 +99,64 @@ header .nav-bar li{
     border: 2px solid var(--var-primary-red-color);
     color: var(--var-primary-red-color);
 }
+.alerts-list .alert.edit{
+    background-color: rgba(251, 139, 36, .2);
+    border: 2px solid var(--var-points-color);
+    color: var(--var-points-color);
+}
 
 .alerts-list .alert.opened {
     opacity: 1;
+}
+
+/* WARNINGS */
+.warnings{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.warning {
+    background-color: var(--var-bg-item-color);
+    width: 30em;
+    box-sizing: border-box;
+    border-radius: 1em;
+    overflow: hidden;
+    position: relative;
+}
+.warning-title {
+    background-color: var(--var-bg-color);
+    color: var(--var-text-color);
+    font-weight: bold;
+    text-align: center;
+    padding: 1em 0;
+    font-size: 1.2em;
+}
+.warning-info{
+    color: var(--var-text-color);
+    font-size: 1.2em;
+    text-align: center;
+    padding-top: 1em;
+}
+.warning-sub-info{
+    color: var(--var-sub-text-color);
+    text-align: center;
+}
+.warning-confirm-buttons{
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+.warning-confirm-buttons .btn-new-task{
+    border-radius: 2em;
+}
+.warning-confirm-buttons .btn-new-task:hover{
+    padding: 1em 3em;
 }

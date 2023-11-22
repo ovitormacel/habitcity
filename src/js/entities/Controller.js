@@ -28,12 +28,15 @@ export class Controller {
         this.alertsListUl = document.getElementById('alerts-list-ul');
 
         //ADD EVENT LISTENERS
-        this.addEventListener()
+        this.addEvents()
         
     }
 
+
+
+
     //ADD EVENT LISTENERS
-    addEventListener(){
+    addEvents(){
         //NEW TASK SUBMIT
         this.btnNewTaskEl.addEventListener('click', () => this.openNewFormTask());
         this.btnCancelNewTask.addEventListener('click', () => this.openNewFormTask());
@@ -43,7 +46,14 @@ export class Controller {
         this.formColorButtons.forEach((btn) => {
             btn.addEventListener('click', (e) => this.changeFormColor(e));
         })
+
+        //WARNINGS
+        document.querySelector('.warning-confirm-confirm').addEventListener('click', () => this.warningConfirm());
+        document.querySelector('.warning-confirm-cancel').addEventListener('click', () => this.warningCancel());
     }
+
+
+
 
     //USER AND PROFILE
     createUser(name, email, password){
@@ -64,11 +74,21 @@ export class Controller {
         this.userSkillPointsEl.innerText = this.user.hero.points;
     }
 
+
+
+
     //TASKS
     openNewFormTask(){
+        this.clearNewFormTask();
+
         const bg = document.querySelector('.form-tasks-background');
+        const formTasks = bg.querySelector('.form-tasks');
+
+        this.formNewTask.classList.remove('edit-mode');
+        formTasks.querySelector('.task-form-title').innerText = 'Nova Tarefa';
+
         bg.classList.toggle('opened');
-        bg.querySelector('.form-tasks').scrollTo({top: 0});
+        formTasks.scrollTo({top: 0});
     }
 
     changeFormColor(event){
@@ -90,30 +110,42 @@ export class Controller {
     submitFormNewTask(e){
         e.preventDefault();
 
-        const taskId = this.getTaskId();
-        const title = this.formNewTask[0].value;
-        const description = this.formNewTask[1].value;
-        const targetDate = this.formNewTask[10].value;
-        const coins = this.formNewTask[11].value;
-        const xp = this.formNewTask[12].value;
+        if(!this.formNewTask.classList.contains('edit-mode')){
+            const taskId = this.getTaskId();
+            const title = this.formNewTask[0].value;
+            const description = this.formNewTask[1].value;
+            const targetDate = this.formNewTask[10].value;
+            const coins = this.formNewTask[11].value;
+            const xp = this.formNewTask[12].value;
 
-        let date = new Date(Date.now()).toLocaleDateString();
+            let date = new Date(Date.now()).toLocaleDateString();
 
-        this.createTask(taskId, title, description, date, coins, xp, this.formColorData, targetDate);
-        this.openNewFormTask();
-        this.clearNewFormTask();
+            this.createTask(taskId, title, description, date, coins, xp, this.formColorData, targetDate);
+        
+            this.openNewFormTask();
+        }
     }
 
     clearNewFormTask(){
         this.formNewTask[0].value = '';
         const description = this.formNewTask[1].value = '';
         const targetDate = this.formNewTask[10].value = '';
-        const coins = this.formNewTask[11].value = '0';
-        const xp = this.formNewTask[12].value = '0';
+        const coins = this.formNewTask[11].value = '';
+        const xp = this.formNewTask[12].value = '';
     }
 
     createTask(taskId, title, description, date, coins, xp, color, targetDate, type = 'daily', status = 'pending'){
         this.user.newTask(this.this, taskId, title, description, date, coins, xp, color, targetDate, type, status)
+        this.renderTaskList();
+    }
+
+    deleteTask(taskid){
+        this.user.tasks[0].forEach((task, i) => {
+            if(task.taskId === taskid){
+                this.user.tasks[0].splice(i, 1);
+            }
+        })
+
         this.renderTaskList();
     }
 
@@ -125,6 +157,9 @@ export class Controller {
         })
     }
 
+
+
+
     //ALERTS
     renderNewAlert(data){
         let li = document.createElement('li');
@@ -135,6 +170,8 @@ export class Controller {
             li.innerHTML = `Você ganhou: ${data.icon} ${data.value}`;
         } else if(data.type === 'fail'){
             li.innerHTML = `Você perdeu: ${data.icon} ${data.value}`;
+        } else if(data.type === 'edit'){
+            li.innerHTML = `Tarefa Editada`;
         }
 
         if(data.value > 0){
@@ -150,5 +187,12 @@ export class Controller {
                 this.alertsListUl.removeChild(li);
             }, 1000 * 4)
         }
+    }
+
+    warningConfirm(){
+        console.log(true);
+    }
+    warningCancel(){
+        console.log(false);
     }
 }

@@ -17,7 +17,7 @@ export class User{
         ]
 
         //TESTE
-        this.newHero('Aninha', 'Bucetuda')
+        this.newHero('macelv', 'Guerreiro');
     }
 
     newHero(username, classe){

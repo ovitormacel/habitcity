@@ -1,8 +1,6 @@
-import { Controller } from "./Controller.js";
-
 export class Task {
-    constructor(user, taskId, title, description, date, coins = 0, xp = 0, color, targetDate = null, type = 'daily', status = 'pending'){
-        this.user = user;
+    constructor(controller, taskId, title, description, date, coins = 0, xp = 0, color, targetDate = null, type = 'daily', status = 'pending'){
+        this.controller = controller;
         this.taskId = taskId;
         this.title = title;
         this.description = description;
@@ -16,13 +14,17 @@ export class Task {
 
         //ELEMENTS
         this.kebabEl;
+        this.kebabMenu;
         this.taskCardEl;
 
+        this.formNewTask = document.getElementById('new-task-form');
+
         this.dailyTasksListEl = document.getElementById('daily-tasks');
+
+        this.editMode = false;
     }
 
     createTaskElement(){
-        console.log(this.user);
         //TASK CARD
         let taskcard = document.createElement('div');
         taskcard.className = 'task-card';
@@ -85,10 +87,12 @@ export class Task {
 
         let kebabBtnEdit = document.createElement('button');
         kebabBtnEdit.className = 'task-btn-edit';
+        kebabBtnEdit.id = 'task-btn-edit';
         kebabBtnEdit.innerHTML = '<i class="fa-solid fa-pen"></i> Editar';
 
         let kebabBtnDelete = document.createElement('button');
         kebabBtnDelete.className = 'task-btn-edit';
+        kebabBtnDelete.id = 'task-btn-delete';
         kebabBtnDelete.innerHTML = '<i class="fa-solid fa-trash-can"></i> Excluir';
 
         //APPENDS
@@ -106,6 +110,7 @@ export class Task {
         this.dailyTasksListEl.appendChild(taskcard);
 
         this.kebabEl = document.getElementById('task-edit' + this.taskId);
+        this.kebabMenu = document.getElementById(`task-kebab-menu-${this.taskId}`)
         this.taskCardEl = document.getElementById(this.taskId);
 
         //ADD EVENT LISTENERS
@@ -115,25 +120,30 @@ export class Task {
     addTaskListeners(){
         this.kebabEl.addEventListener('click', () => this.openKebabMenu());
         this.taskCardEl.querySelector('.task-check').addEventListener('click', () => this.checkTask());
+    
+        //EDIT and DELETE task
+        this.kebabMenu.querySelector('#task-btn-edit').addEventListener('click', () => this.openEditFormTask(this.taskId));
+        this.kebabMenu.querySelector('#task-btn-delete').addEventListener('click', () => this.controller.deleteTask(this.taskId));
+    
+        this.formNewTask.addEventListener('submit', (e) => this.submitFormEditTask(e))
     }
 
     openKebabMenu(){
-        const kebab = document.getElementById(`task-kebab-menu-${this.taskId}`);
-        kebab.classList.toggle('opened');
+        this.kebabMenu.classList.toggle('opened');
     }
 
     checkTask(){
         if(this.status === 'pending'){
             this.status = 'complete';
-            this.user.user.hero.coins += Number(this.coins)
-            this.user.user.hero.xp += Number(this.xp);
+            this.controller.user.hero.coins += Number(this.coins)
+            this.controller.user.hero.xp += Number(this.xp);
 
-            this.user.renderNewAlert({
+            this.controller.renderNewAlert({
                 type: 'reward',
                 icon: '<i class="fa-solid fa-coins"></i>',
                 value: this.coins
             });
-            this.user.renderNewAlert({
+            this.controller.renderNewAlert({
                 type: 'reward',
                 icon: '<i class="fa-solid fa-star"></i>',
                 value: this.xp
@@ -141,15 +151,15 @@ export class Task {
 
         } else if(this.status === 'complete') {
             this.status = 'fail';
-            this.user.user.hero.coins -= Number(this.coins)
-            this.user.user.hero.xp -= Number(this.xp);
+            this.controller.user.hero.coins -= Number(this.coins)
+            this.controller.user.hero.xp -= Number(this.xp);
 
-            this.user.renderNewAlert({
+            this.controller.renderNewAlert({
                 type: 'fail',
                 icon: '<i class="fa-solid fa-coins"></i>',
                 value: this.coins
             });
-            this.user.renderNewAlert({
+            this.controller.renderNewAlert({
                 type: 'fail',
                 icon: '<i class="fa-solid fa-star"></i>',
                 value: this.xp
@@ -159,7 +169,7 @@ export class Task {
         }
 
         this.changeCheckTaskButton();
-        this.user.updateProfile();
+        this.controller.updateProfile();
     }
 
     changeCheckTaskButton(){
@@ -177,5 +187,58 @@ export class Task {
         } else{
             taskBodyEl.querySelector('.task-check').innerHTML = '';
         }
+    }
+
+    /* EDIT TASK */
+    openEditFormTask(id){
+        const bg = document.querySelector('.form-tasks-background');
+        const formTasks = bg.querySelector('.form-tasks');
+
+        formTasks.querySelector('.task-form-title').innerText = 'Editar Tarefa';
+        
+        //UPDATE VALUES
+        this.formNewTask.classList.add('edit-mode');
+        this.formNewTask.dataset.taskid = id;
+        this.formNewTask[0].value = this.title;
+        this.formNewTask[1].value = this.description;
+        this.formNewTask[10].value = this.date;
+        this.formNewTask[11].value = this.coins;
+        this.formNewTask[12].value = this.xp;
+        this.controller.formColorData = this.color;
+
+        //OPEN FORM
+        bg.classList.toggle('opened');
+        formTasks.scrollTo({top: 0});
+    }
+
+    submitFormEditTask(e){
+        e.preventDefault();
+
+        if(this.formNewTask.classList.contains('edit-mode')){
+            this.controller.user.tasks[0].forEach((task) => {
+                if(task.taskId === this.formNewTask.dataset.taskid){
+                    task.title = this.formNewTask[0].value;
+                    task.description = this.formNewTask[1].value;
+                    task.color = this.controller.formColorData;
+                    task.targetDate = this.formNewTask[10].value;
+                    task.coins = this.formNewTask[11].value;
+                    task.xp = this.formNewTask[12].value;
+    
+                    const a = this.formNewTask[0].value;
+                    console.log(a);
+
+                    this.controller.renderNewAlert({
+                        type: 'edit',
+                        icon: '',
+                        value: 1
+                    });
+                }
+            })
+        
+            this.controller.renderTaskList();
+            this.controller.openNewFormTask();
+            
+        }
+ 
     }
 }
