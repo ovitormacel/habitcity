@@ -123,9 +123,10 @@ export class Task {
     
         //EDIT and DELETE task
         this.kebabMenu.querySelector('#task-btn-edit').addEventListener('click', () => this.openEditFormTask(this.taskId));
-        this.kebabMenu.querySelector('#task-btn-delete').addEventListener('click', () => this.controller.deleteTask(this.taskId));
+        this.kebabMenu.querySelector('#task-btn-delete').addEventListener('click', () => this.controller.openWarningConfirm(this.taskId));
     
         this.formNewTask.addEventListener('submit', (e) => this.submitFormEditTask(e))
+        
     }
 
     openKebabMenu(){
@@ -137,6 +138,21 @@ export class Task {
             this.status = 'complete';
             this.controller.user.hero.coins += Number(this.coins)
             this.controller.user.hero.xp += Number(this.xp);
+
+            //CHECK IF LEVEL UP
+            if(this.controller.user.hero.checkLevelUp()){
+                this.controller.renderNewAlert({
+                    type: 'levelup',
+                    icon: '<i class="fa-solid fa-star"></i>',
+                    value: this.controller.user.hero.level
+                });
+
+                this.controller.renderNewAlert({
+                    type: 'points',
+                    icon: '<i class="fa-solid fa-circle-plus"></i>',
+                    value: this.controller.user.hero.level * 3
+                });
+            }
 
             this.controller.renderNewAlert({
                 type: 'reward',
@@ -153,6 +169,13 @@ export class Task {
             this.status = 'fail';
             this.controller.user.hero.coins -= Number(this.coins)
             this.controller.user.hero.xp -= Number(this.xp);
+
+            if(this.controller.user.hero.coins <= 0){
+                this.controller.user.hero.coins = 0;
+            }
+            if(this.controller.user.hero.xp <= 0){
+                this.controller.user.hero.xp = 0;
+            }
 
             this.controller.renderNewAlert({
                 type: 'fail',

@@ -104,6 +104,16 @@ header .nav-bar li{
     border: 2px solid var(--var-points-color);
     color: var(--var-points-color);
 }
+.alerts-list .alert.levelup{
+    background-color: rgba(92, 200, 255, .2);
+    border: 2px solid var(--var-xp-color);
+    color: var(--var-xp-color);
+}
+.alerts-list .alert.points{
+    background-color: rgba(251, 139, 36, .2);
+    border: 2px solid var(--var-points-color);
+    color: var(--var-points-color);
+}
 
 .alerts-list .alert.opened {
     opacity: 1;
@@ -118,9 +128,12 @@ header .nav-bar li{
     top: 0;
     right: 0;
     z-index: 1;
-    display: flex;
     align-items: center;
     justify-content: center;
+    display: none;
+}
+.warnings.opened{
+    display: flex;
 }
 .warning {
     background-color: var(--var-bg-item-color);

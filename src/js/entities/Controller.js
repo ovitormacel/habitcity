@@ -26,6 +26,7 @@ export class Controller {
 
         //ALERTS
         this.alertsListUl = document.getElementById('alerts-list-ul');
+        this.warningsEl = document.querySelector('.warnings');
 
         //ADD EVENT LISTENERS
         this.addEvents()
@@ -46,10 +47,6 @@ export class Controller {
         this.formColorButtons.forEach((btn) => {
             btn.addEventListener('click', (e) => this.changeFormColor(e));
         })
-
-        //WARNINGS
-        document.querySelector('.warning-confirm-confirm').addEventListener('click', () => this.warningConfirm());
-        document.querySelector('.warning-confirm-cancel').addEventListener('click', () => this.warningCancel());
     }
 
 
@@ -144,9 +141,10 @@ export class Controller {
             if(task.taskId === taskid){
                 this.user.tasks[0].splice(i, 1);
             }
-        })
-
+        });
+    
         this.renderTaskList();
+        this.openWarningConfirm();
     }
 
     renderTaskList(){
@@ -172,6 +170,10 @@ export class Controller {
             li.innerHTML = `Você perdeu: ${data.icon} ${data.value}`;
         } else if(data.type === 'edit'){
             li.innerHTML = `Tarefa Editada`;
+        } else if(data.type === 'levelup'){
+            li.innerHTML = `${data.icon} Você subiu para o Nível ${data.value}!`;
+        } else if(data.type === 'points'){
+            li.innerHTML = `${data.icon} Pontos de Habilidade: ${data.value}!`;
         }
 
         if(data.value > 0){
@@ -189,10 +191,11 @@ export class Controller {
         }
     }
 
-    warningConfirm(){
-        console.log(true);
-    }
-    warningCancel(){
-        console.log(false);
+    openWarningConfirm(taskid){
+        this.warningsEl.classList.toggle('opened');
+
+        //WARNINGS
+        document.querySelector('.warning-confirm-confirm').addEventListener('click', () => this.deleteTask(taskid));
+        document.querySelector('.warning-confirm-cancel').addEventListener('click', () => this.openWarningConfirm());
     }
 }
