@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Habitcity</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/profile.css">
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="logo-and-nav">
+            <div class="logo"><p>HP</p></div>
+            <nav class="nav-bar">
+                <ul>
+                    <li><a href="#" class="item-nav-bar"><i class="fa-solid fa-house"></i></a></li>
+                    <li><a href="#" class="item-nav-bar"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="options">
+            <a href="#" class="item-nav-bar"><i class="fa-solid fa-gear"></i></a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- PROFILE HEADER -->
+            <section class="profile-header">
+                <!--PROFILE-->
+                <div class="user-profile">
+                    <div class="user-image"></div>
+                    <div class="user-infos">
+                        <p class="username" id="user-username">username</p>
+                        <p class="userclass" id="user-userclass">Class</p>
+                        <div class="user-levelbar">
+                            <p class="levelbar-value" id="user-level"><i class="fa-solid fa-star"></i> Lvl. 999</p>
+                            <span class="levelbar-outside">
+                                <span class="levelbar-inside" style="width: 45%;"></span> 
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!--EDIT-->
+                <button class="user-profile-edit btn-blank">Editar</button>
+            </section>
+            <section class="profile-rewards">
+                <div class="reward-card coins">
+                    <p class="reward-value coins"><i class="fa-solid fa-coins"></i><span id="user-coins">999999.99</span></p>
+                </div>
+
+                <div class="reward-card experience">
+                    <p class="reward-value xp experience"><i class="fa-solid fa-star"></i><span id="user-experience">1956 / 2000</span></p>
+                </div>
+
+                <div class="reward-card points">
+                    <p class="reward-value skill-points"><i class="fa-solid fa-circle-plus"></i><span id="user-skill-points">99</span></p>
+                </div>
+            </section>
+
+            <!-- MAIN CONTENT AND SKILLS LIST -->
+            <section class="main-content">
+                <section class="main-content-resume">
+                    <div class="user-about">
+                        <h3>Sobre</h3>
+                        <p class="user-about-info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt obcaecati quibusdam, aliquam minima esse deleniti. Eveniet repellendus fuga perferendis dolor itaque ducimus sapiente iusto officiis ut sed debitis, laboriosam blanditiis.</p>
+                    </div>
+
+                    <div class="user-resume-cards">
+                        <div class="card-tasks tasks-complete">
+                            <p class="card-tasks-title">Total de Tarefas Completas</p>
+                            <p class="card-tasks-data" id="card-tasks-data-complete">999</p>
+                            <span class="card-tasks-icon"><i class="fa-solid fa-check"></i></span>
+                        </div>
+
+                        <div class="card-tasks tasks-fail">
+                            <p class="card-tasks-title">Total de Tarefas Incompletas</p>
+                            <p class="card-tasks-data" id="card-tasks-data-fail">999</p>
+                            <span class="card-tasks-icon fail"><i class="fa-solid fa-xmark"></i></span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="skills-list">
+                    <ul>
+                        <li class="skill attack">
+                            <p class="skill-label">Ataque</p>
+                            <div class="skill-card">
+                                <button class="add-skill-point"><i class="fa-solid fa-circle-plus"></i></button>
+                                <p class="skill-points">9999</p>
+                                <span class="skill-icon"><i class="fa-solid fa-dragon"></i></span>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+        </div>
+    </main>
+
+    <script src="https://kit.fontawesome.com/3bb5c1e371.js" crossorigin="anonymous"></script>
+</body>
+</html>

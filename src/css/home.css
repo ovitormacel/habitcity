@@ -78,15 +78,6 @@
 .user-reward ul li i{
     margin-right: .5em;
 }
-.user-reward ul .coins i{
-    color: var(--var-coins-color);
-}
-.user-reward ul .experience i{
-    color: var(--var-xp-color);
-}
-.user-reward ul .skill-points i{
-    color: var(--var-points-color);
-}
 
 /* TASKS */
 .tasks{
@@ -474,50 +465,4 @@
 }
 .input-box-buttons .btn-blank{
     margin-left: 1em;
-}
-
-/*TO-DO*/
-h4{
-    color: var(--var-text-color);
-    margin: 1em 0;
-}
-
-/* BUTTONS */
-.btn-new-task{
-    padding: 1em 2em;
-    background-color: var(--var-call-green-color);
-    font-size: 1em;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: var(--var-bg-color);
-    border: none;
-    border-radius: 2em 0 2em 0;
-    transition: .2s ease-in-out;
-}
-.btn-new-task:hover{
-    border-radius: 2em;
-    cursor: pointer;
-    box-shadow: 0 0 .5em 0 black;
-}
-
-.btn-blank{
-    padding: 1em 2em;
-    background-color: var(--var-bg-color);
-    font-size: 1em;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: var(--var-text-color);
-    border: none;
-    outline: 3px solid var(--var-text-color);
-    outline-offset: -3px;
-    border-radius: 2em;
-    transition: .2s ease-in-out;
-}
-
-.btn-blank:hover{
-    padding: 1em 3em;
-    background-color: var(--var-text-color);
-    color: var(--var-bg-color);
-    cursor: pointer;
-    box-shadow: 0 0 .5em 0 black;
 }

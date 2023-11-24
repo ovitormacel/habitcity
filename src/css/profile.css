@@ -1,0 +1,182 @@
+:root {
+    --var-bg-color: #150F1D;
+    --var-bg-item-color: #3A2A50;
+    --var-primary-red-color: #D72638;
+    --var-call-green-color: #36EE5F;
+    --var-text-color: #ffffff;
+    --var-sub-text-color: #5E5E5E;
+    --var-coins-color: #FFCB56;
+    --var-xp-color: #5CC8FF;
+    --var-points-color: #FB8B24;
+}
+.profile-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 3em;
+    border-bottom: 2px solid var(--var-bg-item-color);
+}
+
+.user-profile{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+.user-profile .user-image{
+    height: 8em;
+    width: 8em;
+    background-color: #3A2A50;
+    border-radius: 8em;
+}
+.user-profile .username{
+    font-size: 2em;
+    font-weight: bold;
+}
+.user-profile .userclass{
+    color: var(--var-sub-text-color);
+    font-size: 1.2em;
+}
+.user-levelbar{
+    width: 15em;
+    height: 2.2em;
+    margin-top: .2em;
+}
+.levelbar-value{
+    text-align: left;
+    color: var(--var-xp-color);
+    margin-bottom: .2em;
+}
+.levelbar-outside{
+    display: block;
+    background-color: var(--var-bg-item-color);
+    height: .8em;
+    border-radius: 1em 0 1em 0;
+    overflow: hidden;
+}
+.levelbar-inside{
+    display: inline-block;
+    height: 1em;
+    background-color: var(--var-xp-color);
+    text-align: right;
+    box-shadow: 0 0 5px 0 var(--var-xp-color);
+}
+
+/* REWARDS */
+.profile-rewards{
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    margin-top: -1.2em;
+}
+.reward-card{
+    background-color: var(--var-bg-item-color);
+    padding: .5em;
+    width: 7em;
+    text-align: center;
+    border-radius: 2em;
+}
+.reward-card.coins{
+    border: 2px solid var(--var-coins-color);
+}
+.reward-card.experience{
+    border: 2px solid var(--var-xp-color);
+}
+.reward-card.points{
+    border: 2px solid var(--var-points-color);
+}
+.reward-card i{
+    margin-right: .2em;
+}
+
+/* MAIN CONTENT */
+.user-about{
+    margin-bottom: 2em;
+}
+.user-about h3{
+    font-size: 1.5em;
+    margin: .8em 0;
+}
+.user-about-info{
+    color: #c1c1c1;
+}
+
+
+.main-content-resume{
+    width: 47.5%;
+}
+.user-resume-cards{
+    display: flex;
+    justify-content: space-between;
+}
+.card-tasks {
+    background-color: var(--var-bg-item-color);
+    width: 47.5%;
+    padding: 1em;
+    box-sizing: border-box;
+    border-radius: 1em;
+    margin-bottom: 1em;
+    position: relative;
+}
+.card-tasks-title{
+    font-size: 1em;
+    color: #c1c1c1;
+}
+.card-tasks-data{
+    font-size: 3em;
+    margin: .3em 0;
+    color: var(--var-call-green-color);
+}
+.card-tasks-icon{
+    background-color: rgba(54, 238, 95, .5);
+    color: var(--var-call-green-color);
+    border: 2px solid var(--var-call-green-color);
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+}
+.card-tasks-icon i{
+    font-size: 1.5em;
+}
+#card-tasks-data-fail{
+    color: var(--var-primary-red-color);
+}
+
+.card-tasks-icon.fail{
+    background-color: rgba(215, 38, 56, .5);
+    color: var(--var-primary-red-color);
+    border: 2px solid var(--var-primary-red-color);
+}
+.card-tasks-icon i{
+    font-size: 1.5em;
+}
+
+/* SKILLS */
+.skill-card{
+    display: flex;
+    align-items: center;
+}
+.skill-points{
+    background-color: var(--var-bg-item-color);
+    font-size: 1.2em;
+    padding: .4em 2em;
+    box-sizing: border-box;
+    border-radius: 1em 0 0 1em;
+}
+.skill-icon{
+    background-color: var(--var-call-green-color);
+    color: var(--var-bg-color);
+    width: 2em;
+    height: 2em;
+    font-size: 1.5em;
+    border-radius: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: -.6em;
+}
