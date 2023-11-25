@@ -89,10 +89,20 @@
 }
 
 /* MAIN CONTENT */
+.main-content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-content hr{
+    border: 1px solid var(--var-bg-item-color);
+    margin-top: 2em;
+}
+
 .user-about{
     margin-bottom: 2em;
 }
-.user-about h3{
+h3{
     font-size: 1.5em;
     margin: .8em 0;
 }
@@ -102,15 +112,16 @@
 
 
 .main-content-resume{
-    width: 47.5%;
+    width: 50%;
 }
 .user-resume-cards{
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5%;
 }
 .card-tasks {
     background-color: var(--var-bg-item-color);
-    width: 47.5%;
+    width: auto;
     padding: 1em;
     box-sizing: border-box;
     border-radius: 1em;
@@ -146,29 +157,56 @@
 #card-tasks-data-fail{
     color: var(--var-primary-red-color);
 }
-
 .card-tasks-icon.fail{
     background-color: rgba(215, 38, 56, .5);
     color: var(--var-primary-red-color);
     border: 2px solid var(--var-primary-red-color);
 }
+
+#card-tasks-data-coins{
+    color: var(--var-coins-color);
+}
+.card-tasks-icon.coins{
+    background-color: rgba(255, 203, 86, .5);
+    color: var(--var-coins-color);
+    border: 2px solid var(--var-coins-color);
+}
+
+#card-tasks-data-points{
+    color: var(--var-points-color);
+}
+.card-tasks-icon.points{
+    background-color: rgba(251, 139, 36, .5);
+    color: var(--var-points-color);
+    border: 2px solid var(--var-points-color);
+}
+
 .card-tasks-icon i{
     font-size: 1.5em;
 }
 
 /* SKILLS */
-.skill-card{
+.list-of-skills-section ul{
+    list-style: none;
+}
+.list-of-skills-label{
+    color: var(--var-sub-text-color);
+    text-align: right;
+    margin-bottom: .2em;
+}
+.list-of-skills-card{
     display: flex;
     align-items: center;
+    margin-bottom: .2em;
 }
-.skill-points{
+.list-of-skills-points{
     background-color: var(--var-bg-item-color);
     font-size: 1.2em;
-    padding: .4em 2em;
+    padding: .4em 4em;
     box-sizing: border-box;
     border-radius: 1em 0 0 1em;
 }
-.skill-icon{
+.list-of-skills-icon{
     background-color: var(--var-call-green-color);
     color: var(--var-bg-color);
     width: 2em;
@@ -179,4 +217,18 @@
     align-items: center;
     justify-content: center;
     margin-left: -.6em;
+}
+.add-skill-point-btn{
+    margin-right: .2em;
+    font-size: 1.5em;
+    color: var(--var-points-color);
+    background-color: transparent;
+    border: none;
+    border-radius: 2em;
+    transition: .2s linear;
+}
+.add-skill-point-btn:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 5px 0 #000;
+    cursor: pointer;
 }

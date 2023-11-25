@@ -39,7 +39,7 @@
                         <p class="username" id="user-username">username</p>
                         <p class="userclass" id="user-userclass">Class</p>
                         <div class="user-levelbar">
-                            <p class="levelbar-value" id="user-level"><i class="fa-solid fa-star"></i> Lvl. 999</p>
+                            <p class="levelbar-value"><i class="fa-solid fa-star"></i> Lvl. <span id="user-level">999</span></p>
                             <span class="levelbar-outside">
                                 <span class="levelbar-inside" style="width: 45%;"></span> 
                             </span>
@@ -83,17 +83,57 @@
                             <p class="card-tasks-data" id="card-tasks-data-fail">999</p>
                             <span class="card-tasks-icon fail"><i class="fa-solid fa-xmark"></i></span>
                         </div>
+
+                        <div class="card-tasks tasks-coins">
+                            <p class="card-tasks-title">Total de Coins Ganhas</p>
+                            <p class="card-tasks-data" id="card-tasks-data-coins">999</p>
+                            <span class="card-tasks-icon coins"><i class="fa-solid fa-coins"></i></span>
+                        </div>
+
+                        <div class="card-tasks tasks-points">
+                            <p class="card-tasks-title">Total de Pontos Ganhos</p>
+                            <p class="card-tasks-data" id="card-tasks-data-points">999</p>
+                            <span class="card-tasks-icon points"><i class="fa-solid fa-circle-plus"></i></span>
+                        </div>
                     </div>
                 </section>
-
-                <section class="skills-list">
+                <hr>
+                <section class="list-of-skills-section">
+                    <h3>Habilidades</h3>
                     <ul>
-                        <li class="skill attack">
-                            <p class="skill-label">Ataque</p>
-                            <div class="skill-card">
-                                <button class="add-skill-point"><i class="fa-solid fa-circle-plus"></i></button>
-                                <p class="skill-points">9999</p>
-                                <span class="skill-icon"><i class="fa-solid fa-dragon"></i></span>
+                        <li class="list-of-skills attack">
+                            <p class="list-of-skills-label">Ataque</p>
+                            <div class="list-of-skills-card">
+                                <button class="add-skill-point-btn"><i class="fa-solid fa-circle-plus"></i></button>
+                                <p class="list-of-skills-points">9999</p>
+                                <span class="list-of-skills-icon"><i class="fa-solid fa-hand-back-fist"></i></span>
+                            </div>
+                        </li>
+
+                        <li class="list-of-skills defense">
+                            <p class="list-of-skills-label">Defesa</p>
+                            <div class="list-of-skills-card">
+                                <button class="add-skill-point-btn"><i class="fa-solid fa-circle-plus"></i></button>
+                                <p class="list-of-skills-points">9999</p>
+                                <span class="list-of-skills-icon"><i class="fa-solid fa-shield"></i></span>
+                            </div>
+                        </li>
+
+                        <li class="list-of-skills maxHp">
+                            <p class="list-of-skills-label">Resistência</p>
+                            <div class="list-of-skills-card">
+                                <button class="add-skill-point-btn"><i class="fa-solid fa-circle-plus"></i></button>
+                                <p class="list-of-skills-points">9999</p>
+                                <span class="list-of-skills-icon"><i class="fa-solid fa-dragon"></i></span>
+                            </div>
+                        </li>
+
+                        <li class="list-of-skills intuition">
+                            <p class="list-of-skills-label">Intuição</p>
+                            <div class="list-of-skills-card">
+                                <button class="add-skill-point-btn"><i class="fa-solid fa-circle-plus"></i></button>
+                                <p class="list-of-skills-points">9999</p>
+                                <span class="list-of-skills-icon"><i class="fa-solid fa-eye"></i></span>
                             </div>
                         </li>
                     </ul>
@@ -102,6 +142,7 @@
         </div>
     </main>
 
+    <script type="module" src="../js/entities/ProfileController.js"></script>
     <script src="https://kit.fontawesome.com/3bb5c1e371.js" crossorigin="anonymous"></script>
 </body>
 </html>

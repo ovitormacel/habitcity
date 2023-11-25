@@ -12,6 +12,27 @@ export class Hero{
         this.defense = defense;
         this.attack = attack;
         this.items = items;
+
+        this.saveHero();
+    }
+
+    saveHero(){
+        const data = {
+            'username': this.username,
+            'classe': this.classe,
+            'level': this.level,
+            'coins': this.coins,
+            'xp': this.xp,
+            'xpForNext': this.xpForNext,
+            'points': this.points,
+            'maxHP': this.maxHP,
+            'hp': this.hp,
+            'defense': this.defense,
+            'attack': this.attack,
+            'items': this.items
+        }
+
+        localStorage.setItem('hero', JSON.stringify(data));
     }
 
     checkLevelUp(){

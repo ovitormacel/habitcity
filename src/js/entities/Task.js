@@ -193,6 +193,7 @@ export class Task {
 
         this.changeCheckTaskButton();
         this.controller.updateProfile();
+        this.controller.user.hero.saveHero();
     }
 
     changeCheckTaskButton(){

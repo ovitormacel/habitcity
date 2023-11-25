@@ -17,11 +17,21 @@ export class User{
         ]
 
         //TESTE
-        this.newHero('macelv', 'Guerreiro');
+        this.saveUser();
+        this.newHero();
     }
 
-    newHero(username, classe){
-        const hero = new Hero(username, classe);
+    saveUser(){
+        localStorage.setItem('user', JSON.stringify({
+            'name': this.name,
+            'email': this.email,
+        }))
+    }
+
+    newHero(){
+        const data = JSON.parse(localStorage.getItem('hero'));
+        
+        const hero = new Hero(data.username, data.classe, data.level, data.coins, data.xp, data.xpForNext, data.points, data.maxHP, data.hp, data.defense, data.attack, data.items);
         this.hero = hero;
     }
 
