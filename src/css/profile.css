@@ -202,7 +202,9 @@ h3{
 .list-of-skills-points{
     background-color: var(--var-bg-item-color);
     font-size: 1.2em;
-    padding: .4em 4em;
+    padding: .4em 0;
+    width: 10em;
+    text-align: center;
     box-sizing: border-box;
     border-radius: 1em 0 0 1em;
 }

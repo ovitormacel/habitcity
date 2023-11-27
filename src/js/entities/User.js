@@ -12,7 +12,6 @@ export class User{
 
         //INDEX 0 = DAILY TASKS | INDEX 1 = MAIN TASKS
         this.tasks = [
-            [],
             []
         ]
 
@@ -30,8 +29,8 @@ export class User{
 
     newHero(){
         const data = JSON.parse(localStorage.getItem('hero'));
+        const hero = new Hero(data.username, data.classe, data.level, data.coins, data.xp, data.xpForNext, data.points, data.maxHP, data.hp, data.defense, data.attack, data.resistence, data.intuition, data.items);
         
-        const hero = new Hero(data.username, data.classe, data.level, data.coins, data.xp, data.xpForNext, data.points, data.maxHP, data.hp, data.defense, data.attack, data.items);
         this.hero = hero;
     }
 

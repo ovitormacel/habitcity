@@ -82,12 +82,10 @@
 /* TASKS */
 .tasks{
     margin-top: 2em;
-    display: flex;
-    gap: 4%;
 }
 
 .daily-tasks{
-    width: 48%;
+    width: 100%;
 }
 .change-day{
     color: var(--var-text-color);
@@ -253,8 +251,8 @@
     width: 7em;
     border-radius: .5em;
     position: absolute;
-    top: 0;
-    right: -7.8em;
+    bottom: -4em;
+    right: 0;
     box-shadow: 0 0 .5em 0 var(--var-bg-color);
     overflow: hidden;
     z-index: 1;

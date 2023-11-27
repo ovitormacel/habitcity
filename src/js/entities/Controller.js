@@ -28,9 +28,14 @@ export class Controller {
         this.alertsListUl = document.getElementById('alerts-list-ul');
         this.warningsEl = document.querySelector('.warnings');
 
+        //METRICS
+        this.completedTasks = JSON.parse(localStorage.getItem('metrics')).completedTasks;
+        this.failTasks = JSON.parse(localStorage.getItem('metrics')).failTasks;
+        this.allCoinsRewards = JSON.parse(localStorage.getItem('metrics')).allCoinsRewards;
+        this.allPointsRewards= JSON.parse(localStorage.getItem('metrics')).allPointsRewards;
+
         //ADD EVENT LISTENERS
         this.addEvents()
-        
     }
 
 
@@ -134,6 +139,7 @@ export class Controller {
     createTask(taskId, title, description, date, coins, xp, color, targetDate, type = 'daily', status = 'pending'){
         this.user.newTask(this.this, taskId, title, description, date, coins, xp, color, targetDate, type, status)
         this.renderTaskList();
+        this.saveTasks();
     }
 
     deleteTask(taskid){
@@ -197,5 +203,48 @@ export class Controller {
         //WARNINGS
         document.querySelector('.warning-confirm-confirm').addEventListener('click', () => this.deleteTask(taskid));
         document.querySelector('.warning-confirm-cancel').addEventListener('click', () => this.openWarningConfirm());
+    }
+
+    //METRICS
+    saveMetrics(){
+        const data = {
+            completedTasks: this.completedTasks,
+            failTasks: this.failTasks,
+            allCoinsRewards: this.allCoinsRewards,
+            allPointsRewards: this.allPointsRewards
+        }
+
+        localStorage.setItem('metrics', JSON.stringify(data));
+    }
+
+    getTasks(){
+        const data = JSON.parse(localStorage.getItem('tasks'));
+        
+        data.forEach((task) => {
+            this.createTask(task.taskId, task.title, task.description, task.date, task.coins, task.xp, task.color, task.targetDate, task.type, task.status);
+        })
+    }
+
+    saveTasks(){
+        let data = []
+        
+        this.user.tasks[0].forEach((taskData) => {
+            let task = {
+                taskId: taskData.taskId,
+                title: taskData.title,
+                description: taskData.description,
+                date: taskData.date,
+                coins: taskData.coins,
+                xp: taskData.xp,
+                color: taskData.color,
+                targetDate: taskData.targetDate,
+                type: taskData.type,
+                status: taskData.status
+            }
+
+            data.push(task);
+        })
+
+        localStorage.setItem('tasks', JSON.stringify(data));
     }
 }

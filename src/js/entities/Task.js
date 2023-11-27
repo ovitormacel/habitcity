@@ -10,7 +10,7 @@ export class Task {
         this.color = color;
         this.targetDate = targetDate;
         this.type = type;
-        this.status = status; 
+        this.status = status;
 
         //ELEMENTS
         this.kebabEl;
@@ -115,6 +115,7 @@ export class Task {
 
         //ADD EVENT LISTENERS
         this.addTaskListeners();
+        this.changeCheckTaskButton();
     }
 
     addTaskListeners(){
@@ -139,6 +140,15 @@ export class Task {
             this.controller.user.hero.coins += Number(this.coins)
             this.controller.user.hero.xp += Number(this.xp);
 
+            //METRICS
+            this.controller.completedTasks++;
+            if(this.status == 'complete'){
+                if(this.controller.failTasks > 0){
+                    this.controller.failTasks--;
+                }
+            }
+            this.controller.allCoinsRewards += Number(this.coins);
+
             //CHECK IF LEVEL UP
             if(this.controller.user.hero.checkLevelUp()){
                 this.controller.renderNewAlert({
@@ -152,6 +162,9 @@ export class Task {
                     icon: '<i class="fa-solid fa-circle-plus"></i>',
                     value: this.controller.user.hero.level * 3
                 });
+
+                //METRICS
+                this.controller.allPointsRewards += this.controller.user.hero.level * 3;
             }
 
             this.controller.renderNewAlert({
@@ -169,6 +182,14 @@ export class Task {
             this.status = 'fail';
             this.controller.user.hero.coins -= Number(this.coins)
             this.controller.user.hero.xp -= Number(this.xp);
+
+            //METRICS
+            if(this.status == 'fail'){
+                if(this.controller.completedTasks > 0){
+                    this.controller.completedTasks--;
+                }
+            }
+            this.controller.failTasks++;
 
             if(this.controller.user.hero.coins <= 0){
                 this.controller.user.hero.coins = 0;
@@ -189,11 +210,19 @@ export class Task {
             });
         } else{
             this.status = 'pending';
+            if(this.status == 'pending'){
+                //METRICS
+                if(this.controller.failTasks > 0){
+                    this.controller.failTasks--
+                }
+            }
         }
 
         this.changeCheckTaskButton();
         this.controller.updateProfile();
         this.controller.user.hero.saveHero();
+        this.controller.saveMetrics();
+        this.controller.saveTasks();
     }
 
     changeCheckTaskButton(){

@@ -1,5 +1,5 @@
 export class Hero{
-    constructor(username, classe, level = 1, coins = 0, xp = 0.00, xpForNext = 40.00, points = 0, maxHP = 100, hp = 100, defense = 0, attack = 0, items = []){
+    constructor(username, classe, level = 1, coins = 0, xp = 0.00, xpForNext = 40.00, points = 0, maxHP = 100, hp = 100, defense = 0, attack = 0, resistence = 0, intuition = 0, items = []){
         this.username = username;
         this.classe = classe;
         this.level = level;
@@ -11,6 +11,8 @@ export class Hero{
         this.hp = hp;
         this.defense = defense;
         this.attack = attack;
+        this.resistence = resistence;
+        this.intuition = intuition;
         this.items = items;
 
         this.saveHero();
@@ -29,6 +31,8 @@ export class Hero{
             'hp': this.hp,
             'defense': this.defense,
             'attack': this.attack,
+            'resistence': this.resistence,
+            'intuition': this.intuition,
             'items': this.items
         }
 
