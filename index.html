@@ -3,160 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gamifique suas Tarefas - Habitcity</title>
+    <title>Login - Habitcity</title>
     <link rel="stylesheet" href="src/css/main.css">
-    <link rel="stylesheet" href="src/css/home.css">
+    <link rel="stylesheet" href="src/css/index.css">
     <!--Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="logo-and-nav">
-            <div class="logo"><p>HP</p></div>
-            <nav class="nav-bar">
-                <ul>
-                    <li><a href="index.html" class="item-nav-bar"><i class="fa-solid fa-house"></i></a></li>
-                    <li><a href="src/pages/profile.html" class="item-nav-bar"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                </ul>
-            </nav>
+    <div class="logo">
+        <p class="logotipo">HC</p>
+    </div>
+
+    <main class="main-content">
+        <div class="title">
+            <h1>Comece sua aventura em Habitcity</h1>
+            <p class="subtitle">Crie seu héroi ou entre em sua conta</p>
         </div>
 
-        <div class="options">
-            <a href="#" class="item-nav-bar"><i class="fa-solid fa-gear"></i></a>
-        </div>
-    </header>
+        <div class="new-hero">
+            <form action="#" id="form-new-hero">
 
-    <main>
-        <div class="container">
-            <section class="user-infos">
-                <div class="user-reward">
-                    <ul>
-                        <li class="coins"><i class="fa-solid fa-coins"></i><span id="user-coins">999999.99</span></li>
-                        <li class="experience"><i class="fa-solid fa-star"></i><span id="user-experience">1956 / 2000</span></li>
-                        <li class="skill-points"><i class="fa-solid fa-circle-plus"></i><span id="user-skill-points">99</span></li>
-                    </ul>
+                <h4>Crie seu primeiro Herói</h4>
+                <div class="input-box">
+                    <label for="username">Nome:</label>
+                    <input type="text" name="username" id="hero-username" required placeholder="Insira o nome do seu herói">
                 </div>
-                <a href="src/pages/profile.html" class="user-profile">
-                    <div class="user-profile-infos">
-                        <p class="username" id="user-username">username</p>
-                        <p class="userclass" id="user-userclass">Class</p>
-                        <div class="user-lifebar">
-                            <p class="lifebar-value" id="user-hp">99999/99999</p>
-                            <span class="lifebar-outside">
-                                <span class="lifebar-inside"></span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="userimage"></div>
-                </a>
-            </section>
-            
-            <div class="tasks">
-                <section class="daily-tasks">
-                    <div class="change-day">
-                        <h2>Minhas Tarefas</h2>
-                        <div class="change-buttons">
-                            <button class="change"><i class="fa-solid fa-arrow-left"></i></button>
-                            <button class="today">Hoje</button>
-                            <button class="change"><i class="fa-solid fa-arrow-right"></i></button>
-                        </div>
-                    </div>
 
-                    <div class="to-do">
-                        <h4>Fazer</h4>
-                        <div class="tasks-list" id="daily-tasks"></div>
-                    </div>
-
-                    <div class="new-daily-task">
-                        <button class="btn-new-task" id="btn-new-task">
-                            <i class="fa-solid fa-plus"></i>
-                             Nova Tarefa
-                        </button>
-                    </div>
-                </section>
-
-
-                <!-- NEW TASK FORM -->
-                <div class="form-tasks-background">
-                    <section class="form-tasks">
-                        <p class="task-form-title">Nova Tarefa</p>
-                        <p class="task-form-subtitle">Construa sua Rotina e evolua seu Herói</p>
-                        <form action="#" id="new-task-form">
-                            
-                            <!--name, description, color, targetDate, coins, xp;-->
-                            <div class="input-box">
-                                <label for="task-form-name">Título</label>
-                                <input type="text" name="task-form-name" id="task-form-name" placeholder="Ex: Beber Água" required>
-                            </div>
-                            <div class="input-box">
-                                <label for="task-form-description">Descrição</label>
-                                <input type="text" name="task-form-description" id="task-form-description" placeholder="Ex: Beber 3 litros de água por dia." required>
-                            </div>
-                            <div class="inpux-box">
-                                <label for="task-form-color" class="task-form-color-label">Cor da Tarefa</label>
-                                <div class="radio-color-list">
-                                    <input type="button" name="task-form-color" id="task-form-color1" class="radio-color blue" data-color="#5CC8FF">
-                                    <input type="button" name="task-form-color" id="task-form-color2" class="radio-color red" data-color="#D72638">
-                                    <input type="button" name="task-form-color" id="task-form-color4" class="radio-color magenta" data-color="#B814B8">
-                                    <input type="button" name="task-form-color" id="task-form-color3" class="radio-color green" data-color="#36EE5F">
-                                    <input type="button" name="task-form-color" id="task-form-color6" class="radio-color orange" data-color="#FB8B24">
-                                    <input type="button" name="task-form-color" id="task-form-color5" class="radio-color pink" data-color="#F288EE">
-                                    <input type="button" name="task-form-color" id="task-form-color7" class="radio-color yellow" data-color="#FFCB56">
-                                    <input type="button" name="task-form-color" id="task-form-color8" class="radio-color white" data-color="#F1F1F1">
-                                </div>
-                            </div>
-                            <div class="input-box task-form-target-date">
-                                <label for="task-form-target-date">Data Alvo</label>
-                                <input type="date" name="task-form-target-date" id="task-form-target-date">
-                            </div>
-                            
-                            <div class="task-form-rewards">
-                                <p class="task-form-rewards-title">Recompensas</p>
-                                <p class="task-form-rewards-subtitle">Seja fiel e justo consigo mesmo</p>
-                                <div class="input-box">
-                                    <label for="task-form-rewards-coins">Coins</label>
-                                    <input type="number" name="task-form-rewards-coins" id="task-form-rewards-coins" placeholder="Moedas" value="0">                                </div>
-                                <div class="input-box">
-                                    <label for="task-form-rewards-xp">Experiência</label>
-                                    <input type="number" name="task-form-rewards-xp" id="task-form-rewards-xp" placeholder="Experiência" value="0">
-                                </div>
-                            </div>
-    
-                            <div class="input-box-buttons">
-                                <input type="submit" value="Nova Tarefa" class="btn-new-task">
-                                <input type="button" value="Cancelar" class="btn-blank" id="btn-cancel">
-                            </div>
-                        </form>
-                    </section>
+                <div class="input-box">
+                    <label for="classe">Classe:</label>
+                    <input type="text" name="classe" id="hero-classe" required placeholder="Ex: Guerreiro, Bruxo, Engenheiro, etc">
                 </div>
-            </div>
-
-            <!-- ALERTS LIST -->
-            <div class="alerts-list">
-                <ul id="alerts-list-ul">
-                    <li class="alert reward">Você ganhou: <i class="fa-solid fa-coins"></i> 999.99</li>
-                    <li class="alert fail">Você perdeu: <i class="fa-solid fa-coins"></i> 999.99</li>
-                </ul>
-            </div>
-
-            <!-- WARNINGS -->
-            <div class="warnings">
-                <div class="warning warning-confirm opened" id="warning">
-                    <p class="warning-title">Excluir Tarefa</p>
-                    <p class="warning-info">Você tem certeza que deseja excluir essa tarefa?</p>
-                    <p class="warning-sub-info">Suas recompensas não serão perdidas</p>
-                    <div class="warning-confirm-buttons">
-                        <button class="warning-confirm-confirm btn-new-task">Excluir</button>
-                        <button class="warning-confirm-cancel btn-blank">Cancelar</button>
-                    </div>
+                <div class="form-submit">
+                    <input type="submit" value="Começar" class="btn-new-task">
+                    <p class="entrar">Já criou um herói? <a href="/src/pages/dashboard.html">Retorne para onde parou.</a></p>
                 </div>
-            </div>
+            </form>
         </div>
     </main>
 
-    <script src="src/js/index.js" type="module"></script>
+    <script src="src/js/home.js"></script>
     <script src="https://kit.fontawesome.com/3bb5c1e371.js" crossorigin="anonymous"></script>
 </body>
 </html>

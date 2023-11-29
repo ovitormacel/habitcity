@@ -29,10 +29,11 @@ export class Controller {
         this.warningsEl = document.querySelector('.warnings');
 
         //METRICS
-        this.completedTasks = JSON.parse(localStorage.getItem('metrics')).completedTasks;
-        this.failTasks = JSON.parse(localStorage.getItem('metrics')).failTasks;
-        this.allCoinsRewards = JSON.parse(localStorage.getItem('metrics')).allCoinsRewards;
-        this.allPointsRewards= JSON.parse(localStorage.getItem('metrics')).allPointsRewards;
+        this.completedTasks = 0;
+        this.failTasks = 0;
+        this.allCoinsRewards = 0;
+        this.allPointsRewards = 0;
+        this.getMetrics();
 
         //ADD EVENT LISTENERS
         this.addEvents()
@@ -151,6 +152,7 @@ export class Controller {
     
         this.renderTaskList();
         this.openWarningConfirm();
+        this.saveTasks()
     }
 
     renderTaskList(){
@@ -217,12 +219,27 @@ export class Controller {
         localStorage.setItem('metrics', JSON.stringify(data));
     }
 
+    getMetrics(){
+        const data = localStorage.getItem('metrics');
+
+        if(data != null){
+            this.completedTasks = JSON.parse(localStorage.getItem('metrics')).completedTasks;
+            this.failTasks = JSON.parse(localStorage.getItem('metrics')).failTasks;
+            this.allCoinsRewards = JSON.parse(localStorage.getItem('metrics')).allCoinsRewards;
+            this.allPointsRewards= JSON.parse(localStorage.getItem('metrics')).allPointsRewards;
+        }
+    }
+
     getTasks(){
         const data = JSON.parse(localStorage.getItem('tasks'));
         
-        data.forEach((task) => {
-            this.createTask(task.taskId, task.title, task.description, task.date, task.coins, task.xp, task.color, task.targetDate, task.type, task.status);
-        })
+        if(data != null){
+            data.forEach((task) => {
+                this.createTask(task.taskId, task.title, task.description, task.date, task.coins, task.xp, task.color, task.targetDate, task.type, task.status);
+            })
+        } else{
+            this.createTask('01', 'Tarefa de Demonstração', 'Clique no Menu à direita para Editar ou Excluir', 'dd/mm/yyyy', 0, 0)
+        }
     }
 
     saveTasks(){

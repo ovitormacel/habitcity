@@ -1,5 +1,5 @@
 export class Task {
-    constructor(controller, taskId, title, description, date, coins = 0, xp = 0, color, targetDate = null, type = 'daily', status = 'pending'){
+    constructor(controller, taskId, title, description, date, coins = 0, xp = 0, color = '#36EE5F', targetDate = null, type = 'daily', status = 'pending'){
         this.controller = controller;
         this.taskId = taskId;
         this.title = title;
@@ -141,7 +141,7 @@ export class Task {
             this.controller.user.hero.xp += Number(this.xp);
 
             //METRICS
-            this.controller.completedTasks++;
+            this.controller.completedTasks += 1;
             if(this.status == 'complete'){
                 if(this.controller.failTasks > 0){
                     this.controller.failTasks--;
@@ -165,6 +165,7 @@ export class Task {
 
                 //METRICS
                 this.controller.allPointsRewards += this.controller.user.hero.level * 3;
+                this.controller.saveMetrics();
             }
 
             this.controller.renderNewAlert({
@@ -290,6 +291,7 @@ export class Task {
         
             this.controller.renderTaskList();
             this.controller.openNewFormTask();
+            this.controller.saveTasks();
             
         }
  
