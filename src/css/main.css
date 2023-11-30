@@ -91,27 +91,27 @@ header .nav-bar li{
 }
 
 .alerts-list .alert.reward {
-    background-color: rgba(54, 238, 95, .2);
+    background-color: #2b6437;
     border: 2px solid var(--var-call-green-color);
     color: var(--var-call-green-color);
 }
 .alerts-list .alert.fail{
-    background-color: rgba(215, 38, 56, .2);
+    background-color: #5a1a1f;
     border: 2px solid var(--var-primary-red-color);
     color: var(--var-primary-red-color);
 }
 .alerts-list .alert.edit{
-    background-color: rgba(251, 139, 36, .2);
+    background-color: #5f3b18;
     border: 2px solid var(--var-points-color);
     color: var(--var-points-color);
 }
 .alerts-list .alert.levelup{
-    background-color: rgba(92, 200, 255, .2);
+    background-color: #274858;
     border: 2px solid var(--var-xp-color);
     color: var(--var-xp-color);
 }
 .alerts-list .alert.points{
-    background-color: rgba(251, 139, 36, .2);
+    background-color: #5f3b18;
     border: 2px solid var(--var-points-color);
     color: var(--var-points-color);
 }
@@ -230,4 +230,56 @@ h4{
     color: var(--var-bg-color);
     cursor: pointer;
     box-shadow: 0 0 .5em 0 black;
+}
+
+
+
+@media screen and (max-width: 550px){
+    
+    .container{
+        width: 100%;
+        margin-left: 0;
+        padding: 1em;
+        margin-bottom: 5em;
+    }
+
+    /* HEADER */
+    header{
+        bottom: 0;
+        left: 0;
+        height: 10%;
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border-top: 2px solid var(--var-bg-item-color);
+        padding: 1em;
+        z-index: 10;
+        background-color: var(--var-bg-color);
+    }
+    header .logo{
+        display: none;
+    }
+    header .nav-bar ul{       
+        display: flex;
+    }
+    header .nav-bar li{
+        margin-bottom: 0em;
+    }
+    .item-nav-bar{
+        font-size: 2em;
+        margin-right: .5em;
+    }
+
+
+
+    /* ALERTS LIST */
+    .alerts-list{
+        bottom: 12%;
+        right: 1em;
+    }
+
+    .warning {
+        width: 28em;
+    }
 }

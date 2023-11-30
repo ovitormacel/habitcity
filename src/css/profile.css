@@ -234,3 +234,81 @@ h3{
     box-shadow: 0 0 5px 0 #000;
     cursor: pointer;
 }
+
+
+
+@media screen and (max-width: 550px){
+    .profile-header{
+        border-bottom: none;
+    }
+
+    .user-profile{
+        gap: 0em;
+    }
+    .user-profile .user-image{
+        height: 5em;
+        width: 5em;
+        margin-right: .5em;
+    }
+    .user-profile .username{
+        font-size: 1.5em;
+    }
+    .user-profile .userclass{
+        font-size: 1em;
+    }
+    .user-levelbar{
+        width: 12em;
+    }
+    
+    /* REWARDS */
+    .profile-rewards{
+        display: flex;
+        justify-content: space-around;
+        margin: .5em 0 2em 0;
+    }
+    .reward-card{
+        background-color: transparent;
+        padding: 0;
+        width: auto;
+        border: none;
+    }
+    .reward-card.coins{
+        border: none;
+    }
+    .reward-card.experience{
+        border: none;
+    }
+    .reward-card.points{
+        border: none;
+    }
+    .reward-card i{
+        margin-right: .2em;
+    }
+    
+    /* MAIN CONTENT */
+    .main-content{
+        flex-direction: column-reverse;
+    }
+
+    .main-content-resume{
+        width: 100%;
+    }
+    .user-resume-cards{
+        margin-bottom: 8em;
+    }
+    
+    /* SKILLS */
+    .list-of-skills-section ul{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1em;
+    }
+    .list-of-skills-points{
+        width: 75%;
+    }
+
+    .btn-blank{
+        padding: 1em 2em;
+        font-size: 1em;
+    }
+}

@@ -74,8 +74,103 @@
     justify-content: space-between;
     flex-direction: row-reverse;
     align-items: center;
+    gap: .5em;
 }
 
 .entrar a{
     color: var(--var-primary-red-color);
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 2em;
+    text-align: center;
+    width: 100%;
+}
+footer p{
+    color: var(--var-sub-text-color);
+}
+footer a{
+    color: var(--var-primary-red-color);
+    text-decoration: none;
+}
+
+
+@media screen and (max-width: 550px){
+    
+    .main-content {
+        /* display: flex; */
+        /* align-items: center; */
+        /* padding: 0 3.5em; */
+        /* height: 100vh; */
+        /* justify-content: space-between; */
+
+        flex-direction: column;
+        justify-content: inherit;
+        margin-top: 7em;
+    }
+    
+    .main-content .title{
+        width: 100%;
+        margin-bottom: 5em;
+    }
+    .main-content .title h1{
+        font-size: 2.5em;
+        /* margin-bottom: .2em; */
+        text-align: center;
+    }
+    .main-content .title .subtitle{
+        /* font-size: 1.2em; */
+        /* color: var(--var-sub-text-color); */
+
+        text-align: center;
+    }
+    
+    .new-hero {
+        width: 100%;
+        /* background-color: var(--var-bg-item-color); */
+        /* padding: .5em 1em 2em 1em; */
+        /* box-sizing: border-box; */
+        /* border-radius: 1em; */
+    }
+    #form-new-hero h4{
+        /* font-size: 1.5em; */
+        /* text-align: center; */
+        /* color: var(--var-text-color); */
+    }
+    #form-new-hero .input-box{
+        display: flex;
+        flex-direction: column;
+    }
+    #form-new-hero input[type=text]{
+        padding: 1em;
+        background-color: var(--var-bg-color);
+        border: 2px solid var(--var-bg-item-color);
+        border-radius: .7em;
+        margin-bottom: 1em;
+        color: var(--var-text-color);
+    }
+    #form-new-hero input[type=text]::placeholder{
+        color: var(--var-sub-text-color);
+    }
+    #form-new-hero label{
+        color: #c1c1c1;
+    }
+    .form-submit{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+    
+    .entrar a{
+        color: var(--var-primary-red-color);
+    }
+
+    footer{
+        position: inherit;
+        box-sizing: border-box;
+    }
 }
